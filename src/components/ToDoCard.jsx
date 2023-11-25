@@ -41,7 +41,7 @@ export const ToDoCard = ({ _id, title, desc }) => {
   }
 
   return (
-    <div className="flex flex-col gap-2 p-2 pt-5 border-2 rounded-lg relative bg-yellow-100">
+    <div className="flex flex-col gap-2 p-2 pt-5 border-2 rounded-lg relative bg-yellow-200">
       {onEdit ? (
         <>
           <p>Title</p>
