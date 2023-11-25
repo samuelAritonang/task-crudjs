@@ -4,8 +4,7 @@
 
 @layer base {
   body {
-    background: url("https://images7.alphacoders.com/546/546508.jpg") no-repeat
-      center center fixed;
+    background: url("/montain.jpg") no-repeat center center fixed;
     background-size: cover;
   }
 
