@@ -10,49 +10,84 @@ export const ToDoCard = ({ _id, title, desc }) => {
   const [currentDesc, setCurrentDesc] = useState(desc);
 
   async function handleDelete() {
-    await fetch("https://v1.appbackend.io/v1/rows/O70zcH27AlTh" , {
+    await fetch("https://v1.appbackend.io/v1/rows/O70zcH27AlTh", {
       method: "DELETE",
       headers: {
-            'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify([_id])
-});
+      body: JSON.stringify([_id]),
+    });
 
-        router.refresh();
-    }
+    router.refresh();
+  }
 
   async function handleUpdate() {
     const res = await fetch("https://v1.appbackend.io/v1/rows/O70zcH27AlTh", {
-        method: "PUT",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({"_id":_id,"title":currentTitle,"desc":""}),
-    });   
-    
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+
+      body: JSON.stringify({
+        _id: _id,
+        title: currentTitle,
+        desc: currentDesc,
+      }),
+    });
+
     const data = await res.json();
     setOnEdit(false);
     router.refresh();
   }
 
   return (
-    <div className="flex gap-2 p-2 border-2 rounded-lg">
+    <div className="flex flex-col gap-2 p-2 pt-5 border-2 rounded-lg relative bg-yellow-100">
       {onEdit ? (
-        <input value={currentTitle} onChange={(e) => setCurrentTitle(e.target.value)} className="border-2 p-2 rounded-lg" />
+        <>
+          <p>Title</p>
+          <input
+            value={currentTitle}
+            onChange={(e) => setCurrentTitle(e.target.value)}
+            className="border-2 p-2 rounded-lg"
+          />
+          <p>Description</p>
+          <textarea
+            rows={3}
+            value={currentDesc}
+            onChange={(e) => setCurrentDesc(e.target.value)}
+            className="border-2 p-2 rounded-lg"
+          />
+        </>
       ) : (
-        <div>{currentTitle}</div>
+        <>
+          <div className="text-center">
+            <h3>{currentTitle}</h3>
+          </div>
+          <div>
+            <p>{currentDesc}</p>
+          </div>
+        </>
       )}
       {onEdit ? (
-        <button className="text-xs bg-emerald-300 text-emerald-800 p-1 rounded-lg" onClick={handleUpdate}>
+        <button
+          className="text-xs bg-emerald-300 text-black p-1 rounded-lg"
+          onClick={handleUpdate}
+        >
           Update
         </button>
       ) : (
-        <button className="text-xs bg-yellow-300 text-yellow-800 p-1 rounded-lg" onClick={() => setOnEdit(true)}>
+        <button
+          className="text-xs bg-yellow-500 text-black p-1 rounded-lg"
+          onClick={() => setOnEdit(true)}
+        >
           Edit
         </button>
       )}
-      <button className="text-xs bg-rose-300 text-rose-800 p-1 rounded-lg" onClick={handleDelete}>
-        Delete
+      <button
+        className="text-center absolute text-xs bg-rose-300 text-black w-4 h-4 rounded-full top-1 right-1"
+        onClick={handleDelete}
+      >
+        X
       </button>
     </div>
   );
