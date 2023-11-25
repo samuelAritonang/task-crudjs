@@ -3,27 +3,28 @@
 @tailwind utilities;
 
 @layer base {
-    body {
-        background: url('/danau-ranu-kumbolo-gunung-semeru.jpg') no-repeat center center fixed;        
-        background-size: cover;
-    }
+  body {
+    background: url("https://images7.alphacoders.com/546/546508.jpg") no-repeat
+      center center fixed;
+    background-size: cover;
+  }
 
-    h1 {
-        @apply text-5xl;
-    }
-    h2 {
-        @apply text-3xl;
-    }
-    h3 {
-        @apply text-2xl;
-    }
-    h4 {
-        @apply text-lg font-normal;
-    }
-    h5 {
-        @apply text-lg;
-    }
-    h6 {
-        @apply text-base;
-    }
+  h1 {
+    @apply text-5xl;
+  }
+  h2 {
+    @apply text-3xl;
+  }
+  h3 {
+    @apply text-2xl;
+  }
+  h4 {
+    @apply text-lg font-normal;
+  }
+  h5 {
+    @apply text-lg;
+  }
+  h6 {
+    @apply text-base;
+  }
 }
